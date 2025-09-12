@@ -1,0 +1,52 @@
+# Go build artifacts
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, build outputs
+*.test
+*.out
+
+# Debug binaries (e.g., created by VS Code Go tools)
+__debug_bin*
+debug
+
+# Output directories
+bin/
+build/
+dist/
+out/
+logs/
+tmp/
+temp/
+
+# Coverage and profiling
+*.cover
+*.cov
+coverage.out
+coverage/
+cover.out
+profile.out
+cpu.pprof
+mem.pprof
+heap.pprof
+*.pprof
+
+# OS/system files
+.DS_Store
+Thumbs.db
+
+# Env and local config
+.env
+.env.*
+*.local
+
+# Dependency vendoring (uncomment if you DO NOT commit vendor)
+# vendor/
+
+# IDE/editor files (optional - uncomment as desired)
+# .vscode/
+# .idea/
