@@ -2,49 +2,77 @@ package main
 
 import (
 	"embed"
+	"io/fs"
 	"os"
 	"time"
 
 	"github.com/primadi/lokstra"
-	"github.com/primadi/lokstra/common/static_files"
 )
 
 //go:embed admin_app
 var embedAdminApp embed.FS
 
+//go:embed web_app
+var embedWebApp embed.FS
+
+//go:embed static
+var embedStaticFiles embed.FS
+
+type assetFS struct {
+	adminApp    fs.FS
+	webApp      fs.FS
+	staticFiles fs.FS
+}
+
+func initAssetFS(embed bool) *assetFS {
+	if embed {
+		fsAdminApp, _ := fs.Sub(embedAdminApp, "admin_app")
+		fsWebApp, _ := fs.Sub(embedWebApp, "web_app")
+		fsStatic, _ := fs.Sub(embedStaticFiles, "static")
+
+		return &assetFS{
+			adminApp:    fsAdminApp,
+			webApp:      fsWebApp,
+			staticFiles: fsStatic,
+		}
+	}
+
+	return &assetFS{
+		adminApp:    os.DirFS("./admin_app"),
+		webApp:      os.DirFS("./web_app"),
+		staticFiles: os.DirFS("./static"),
+	}
+}
+
 func main() {
 	// 1. Create global registration context
 	regCtx := lokstra.NewGlobalRegistrationContext()
 
-	// 2. Create lokstra server
-	server := lokstra.NewServer(regCtx, "lokstra-demo-htmx-app")
-
+	// 2. Get port from environment variable or use default
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
 	}
 
 	// 3. Create application
-	app := server.NewApp("htmx-demo", ":"+port)
+	app := lokstra.NewApp(regCtx, "htmx-demo", ":"+port)
+
+	assetFs := initAssetFS(true)
 
 	// 4. Mount Htmx App
-	sf := static_files.New().
-		WithSourceDir("./web_app")
-	app.MountHtmx("/", sf.Sources...)
+	app.MountHtmx("/", assetFs.webApp)
 
 	// 5. Mount Admin App
-	sfAdmin := static_files.New().
-		WithEmbedFS(embedAdminApp, "admin_app")
-	app.MountHtmx("/admin", sfAdmin.Sources...)
+	app.MountHtmx("/admin", assetFs.adminApp)
 
 	// 6. Mount static files (for assets like CSS, JS, images)
-	app.MountStatic("/static", false, os.DirFS("./static"))
+	app.MountStatic("/static", false, assetFs.staticFiles)
 
 	// 6. Register page_data to serve page data for web app
 	registerPageData(app)
 
-	// 7. Start server
-	server.Start()
+	// 7. Start App
+	app.Start()
 }
 
 func registerPageData(app *lokstra.App) {
