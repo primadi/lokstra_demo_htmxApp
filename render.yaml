@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: my-go-app
+    runtime: go
+    plan: free
+    buildCommand: go build -o app .
+    startCommand: ./app
+    envVars:
+      - key: GO_VERSION
+        value: 1.25.0
