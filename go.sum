@@ -45,6 +45,8 @@ github.com/primadi/lokstra v0.1.7 h1:XN+Gwh8gBsVYvtR7uK8mf4PZ1TxDnGWox7kavoiDmuY
 github.com/primadi/lokstra v0.1.7/go.mod h1:2pLORJ8rEqHAJMVmSF1uL2W361ZqdNnDgIKgpsHQGR4=
 github.com/primadi/lokstra v0.1.8 h1:NpUinEZgqqwQ5zMKvdpnOBZapzp5RjKPt1KDQmQvN58=
 github.com/primadi/lokstra v0.1.8/go.mod h1:2pLORJ8rEqHAJMVmSF1uL2W361ZqdNnDgIKgpsHQGR4=
+github.com/primadi/lokstra v0.1.9 h1:3IDreJmNIVVniW7cBik3I8vYz2cd38JXDloJHBCWFNo=
+github.com/primadi/lokstra v0.1.9/go.mod h1:2pLORJ8rEqHAJMVmSF1uL2W361ZqdNnDgIKgpsHQGR4=
 github.com/prometheus/client_golang v1.23.2 h1:Je96obch5RDVy3FDMndoUsjAhG5Edi49h0RJWRi/o0o=
 github.com/prometheus/client_golang v1.23.2/go.mod h1:Tb1a6LWHB3/SPIzCoaDXI4I8UHKeFTEQ1YCr+0Gyqmg=
 github.com/prometheus/client_model v0.6.2 h1:oBsgwpGs7iVziMvrGhE53c/GrLUsZdHnqNwqPLxwZyk=

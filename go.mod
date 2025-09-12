@@ -2,7 +2,7 @@ module lokstra_demo_htmxapp
 
 go 1.25.1
 
-require github.com/primadi/lokstra v0.1.8
+require github.com/primadi/lokstra v0.1.9
 
 require (
 	github.com/andybalholm/brotli v1.2.0 // indirect
