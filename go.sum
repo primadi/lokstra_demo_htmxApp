@@ -55,8 +55,8 @@ github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822/go.mod h1:+n7T8m
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
-github.com/primadi/lokstra v0.1.9 h1:3IDreJmNIVVniW7cBik3I8vYz2cd38JXDloJHBCWFNo=
-github.com/primadi/lokstra v0.1.9/go.mod h1:2pLORJ8rEqHAJMVmSF1uL2W361ZqdNnDgIKgpsHQGR4=
+github.com/primadi/lokstra v0.1.10 h1:gvr2GlUg/R9njxGWqonQYgsQpYT/1S+1fxUNiaFOEmw=
+github.com/primadi/lokstra v0.1.10/go.mod h1:rcwBUnQDKGgBjYyiXK2glslcZvzvNJ3NE+pRdPRGgJE=
 github.com/prometheus/client_golang v1.23.2 h1:Je96obch5RDVy3FDMndoUsjAhG5Edi49h0RJWRi/o0o=
 github.com/prometheus/client_golang v1.23.2/go.mod h1:Tb1a6LWHB3/SPIzCoaDXI4I8UHKeFTEQ1YCr+0Gyqmg=
 github.com/prometheus/client_model v0.6.2 h1:oBsgwpGs7iVziMvrGhE53c/GrLUsZdHnqNwqPLxwZyk=

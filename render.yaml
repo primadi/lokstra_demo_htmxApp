@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: my-go-app
-    runtime: go
-    buildCommand: go mod edit -go=1.25 && go build -tags netgo -ldflags '-s -w' -o app
-    startCommand: ./app
-    envVars:
-      - key: GO_VERSION
-        value: 1.25.0
