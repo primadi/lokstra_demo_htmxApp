@@ -2,33 +2,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("Lokstra HTMX Demo App loaded")
 
-  // Add loading indicators
-  document.body.addEventListener("htmx:beforeRequest", function (evt) {
-    console.log("HTMX request starting:", evt.detail.requestConfig.path)
-
-    // Add loading class to the element
-    if (evt.target) {
-      evt.target.classList.add("htmx-loading")
-    }
-  })
-
-  document.body.addEventListener("htmx:afterRequest", function (evt) {
-    console.log("HTMX request completed:", evt.detail.requestConfig.path)
-
-    // Remove loading class
-    if (evt.target) {
-      evt.target.classList.remove("htmx-loading")
-    }
-
-    // Add fade-in effect to new content
-    if (evt.detail.successful) {
-      const newContent = evt.target.querySelector("[hx-swap-oob], .fade-in")
-      if (newContent) {
-        newContent.classList.add("fade-in")
-      }
-    }
-  })
-
   // Handle form submissions
   document.body.addEventListener("htmx:responseError", function (evt) {
     console.error("HTMX request error:", evt.detail)

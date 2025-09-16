@@ -57,13 +57,13 @@ func main() {
 	// 3. Create application
 	app := lokstra.NewApp(regCtx, "htmx-demo", ":"+port)
 
-	assetFs := initAssetFS(true)
+	assetFs := initAssetFS(false)
 
 	// 4. Mount Htmx App
-	app.MountHtmx("/", assetFs.webApp)
+	app.MountHtmx("/", nil, assetFs.webApp)
 
 	// 5. Mount Admin App
-	app.MountHtmx("/admin", assetFs.adminApp)
+	app.MountHtmx("/admin", nil, assetFs.adminApp)
 
 	// 6. Mount static files (for assets like CSS, JS, images)
 	app.MountStatic("/static", false, assetFs.staticFiles)
@@ -71,8 +71,13 @@ func main() {
 	// 6. Register page_data to serve page data for web app
 	registerPageData(app)
 
-	// 7. Start App
-	app.Start()
+	// 7. Register API endpoints
+	registerApi(app)
+
+	// 8. Start App
+	if err := app.Start(); err != nil {
+		lokstra.Logger.Fatalf("Failed to start app: %v", err)
+	}
 }
 
 func registerPageData(app *lokstra.App) {
@@ -123,11 +128,12 @@ func registerPageData(app *lokstra.App) {
 	})
 
 	adminPageDataGroup := pageDataGroup.Group("/admin")
-
 	adminPageDataGroup.GET("/", func(ctx *lokstra.Context) error {
 		return ctx.HtmxPageData("Admin Dashboard", "", nil)
 	})
+}
 
+func registerApi(app *lokstra.App) {
 	// API endpoints for HTMX interactions
 	apiGroup := app.Group("/api")
 	apiGroup.POST("/contact", func(ctx *lokstra.Context) error {
